@@ -14,13 +14,30 @@ newEvent.put("eventTime", request.getParameter("eventTime"));
     <meta name="author" content="">
 
     <title>Meal Options Selector</title>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/navbar-fixed-top.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.locationOptions').slick({
+
+            });
+			 $('.priceOptions').slick({
+
+            });
+			$('.cuisineOptions').slick({
+
+            });
+        });
+    </script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -48,31 +65,33 @@ function goNext() {
     </div>
 <div class="container"><h2>Where do you want to eat?</h2>
 </div>
-
-
-<div id="carousel-locations" class="carousel slide" data-interval="false" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-            <div class="carousel-inner">
-            	<div class="item active"><div class="carousel-content"><div><h3>All Locations</h3></div></div></div>
-				<div class="item"><div class="carousel-content"><div><h3>Central</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>North</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>South</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>East</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>West</h3></div></div></div>
-                
-            </div>
-        </div>
+<div class="locationOptions">
+        <div><img src="images/options/allLocations.png"></div>
+        <div><img src="images/options/central.png"></div>
+        <div><img src="images/options/north.png"></div>
+        <div><img src="images/options/south.png"></div>
+        <div><img src="images/options/east.png"></div>
+        <div><img src="images/options/west.png"></div>
     </div>
-        <!-- Controls --> <a class="left carousel-control" href="#carousel-locations" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
- <a class="right carousel-control" href="#carousel-locations" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
+    
+    <div class="priceOptions">
+        <div><img src="images/options/allPrices.png"></div>
+        <div><img src="images/options/10.png"></div>
+        <div><img src="images/options/20.png"></div>
+        <div><img src="images/options/30.png"></div>
+        <div><img src="images/options/31.png"></div>
+    </div>
+    
+        <div class="cuisineOptions">
+        <div><img src="images/options/allCuisines.png"></div>
+        <div><img src="images/options/chinese.png"></div>
+        <div><img src="images/options/indian.png"></div>
+        <div><img src="images/options/italian.png"></div>
+        <div><img src="images/options/japanese.png"></div>
+        <div><img src="images/options/korean.png"></div>
+        <div><img src="images/options/malay.png"></div>
+    </div>
 
-</div>
     <div id="carousel-price" class="carousel slide" data-interval="false" data-ride="carousel">
     <!-- Wrapper for slides -->
     <div class="row">
