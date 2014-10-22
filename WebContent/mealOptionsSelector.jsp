@@ -49,7 +49,7 @@ function goNext() {
 <div class="container"><h2>Where do you want to eat?</h2>
 </div>
 
-<table class="table table-bordered"><tr><td>Search<span class="pull-right glyphicon glyphicon-search"></span></td></tr></table>
+
 <div id="carousel-locations" class="carousel slide" data-interval="false" data-ride="carousel">
     <!-- Wrapper for slides -->
     <div class="row">
