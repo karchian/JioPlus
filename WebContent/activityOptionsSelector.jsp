@@ -14,12 +14,28 @@ newEvent.put("eventType", request.getParameter("eventType"));
     <meta name="author" content="">
 
     <title>Activity Options Selector</title>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/navbar-fixed-top.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.locationOptions').slick({
+
+            });
+			 $('.activityOptions').slick({
+
+            });
+        });
+    </script>
+    
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,51 +64,22 @@ function goNext() {
     </div>
 <div class="container"><h2>What do you want to do?</h2>
 </div>
-
-<div id="carousel-locations" class="carousel slide" data-interval="false" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-            <div class="carousel-inner">
-            	<div class="item active"><div class="carousel-content"><div><h3>All Locations</h3></div></div></div>
-				<div class="item"><div class="carousel-content"><div><h3>Central</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>North</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>South</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>East</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>West</h3></div></div></div>
-                
-            </div>
-        </div>
+    <div class="locationOptions">
+        <div><img src="images/options/allLocations.png"></div>
+        <div><img src="images/options/central.png"></div>
+        <div><img src="images/options/north.png"></div>
+        <div><img src="images/options/south.png"></div>
+        <div><img src="images/options/east.png"></div>
+        <div><img src="images/options/west.png"></div>
     </div>
-        <!-- Controls --> <a class="left carousel-control" href="#carousel-locations" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
- <a class="right carousel-control" href="#carousel-locations" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-
-</div>
-    <div id="carousel-sports" class="carousel slide" data-interval="false" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-            <div class="carousel-inner">
-            	<div class="item active"><div class="carousel-content"><div><h3>All Sports</h3></div></div></div>
-				<div class="item"><div class="carousel-content"><div><h3>Archery</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>Bowling</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>Cricket</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>Futsal</h3></div></div></div>
-            </div>
-        </div>
+    
+    <div class="activityOptions">
+        <div><img src="images/options/allSports.png"></div>
+        <div><img src="images/options/archery.png"></div>
+        <div><img src="images/options/bowling.png"></div>
+        <div><img src="images/options/cricket.png"></div>
+        <div><img src="images/options/futsal.png"></div>
     </div>
-    <!-- Controls --> <a class="left carousel-control" href="#carousel-sports" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
- <a class="right carousel-control" href="#carousel-sports" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-
-</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
