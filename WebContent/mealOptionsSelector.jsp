@@ -92,50 +92,6 @@ function goNext() {
         <div><img src="images/options/malay.png"></div>
     </div>
 
-    <div id="carousel-price" class="carousel slide" data-interval="false" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-            <div class="carousel-inner">
-            	<div class="item active"><div class="carousel-content"><div><h3>All Price Ranges</h3></div></div></div>
-				<div class="item"><div class="carousel-content"><div><h3><$10</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>$10-$20</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>$21-$30</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>>$31</h3></div></div></div>
-            </div>
-        </div>
-    </div>
-    <!-- Controls --> <a class="left carousel-control" href="#carousel-price" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
- <a class="right carousel-control" href="#carousel-price" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-
-</div>
-<div id="carousel-cuisine" class="carousel slide" data-interval="false" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-            <div class="carousel-inner">
-            	<div class="item active"><div class="carousel-content"><div><h3>All Cuisines</h3></div></div></div>
-				<div class="item"><div class="carousel-content"><div><h3>Korean</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>Japanese</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>Chinese</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>Indian</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>Italian</h3></div></div></div>
-                <div class="item"><div class="carousel-content"><div><h3>Malay</h3></div></div></div>
-            </div>
-        </div>
-    </div>
-    <!-- Controls --> <a class="left carousel-control" href="#carousel-cuisine" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
- <a class="right carousel-control" href="#carousel-cuisine" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-
-</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
