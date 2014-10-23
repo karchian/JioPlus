@@ -54,9 +54,9 @@
     </div>
 
     <div class="welcomeSlides">
-        <div><img src="images/location1.jpg"></div>
-        <div><img src="images/location2.jpg"></div>
-        <div><img src="images/location3.jpg"></div>
+        <div><img src="images/Restaurant1.png"></div>
+        <div><img src="images/Restaurant2.png"></div>
+        <div><img src="images/Restaurant3.png"></div>
     </div>
     
     </body>
