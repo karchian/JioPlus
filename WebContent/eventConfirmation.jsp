@@ -4,8 +4,9 @@
   
   <%
 JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
-newEvent.put("eventLocation", request.getParameter("location"));
-System.out.println(newEvent);
+JSONArray options = newEvent.getJSONArray("options");
+JSONObject o1 = options.getJSONObject(0);
+o1.put("eventLocation", request.getParameter("location"));
 %>
 <!DOCTYPE html>
 
@@ -85,8 +86,8 @@ System.out.println(newEvent);
 		     		</div>
 		     		
 		     	<%
-		     		String eventDate = json.getString("eventDate");
-					String eventTime = json.getString("eventTime");
+		     		String eventDate = o1.getString("eventDate");
+					String eventTime = o1.getString("eventTime");
 		     	%>	
 		     		
 		     		<div class="row"> 
@@ -104,8 +105,8 @@ System.out.println(newEvent);
 		     		</br>
 		     		
 		     		<%
-		     			String eventLocation = json.getString("eventLocation");
-		     			String eventAddress = json.getString("eventAddress");
+		     			String eventLocation = o1.getString("eventLocation");
+		     			String eventAddress = "81 Victoria St, 188065";
 		     		%>
 		     		
 		     		<div class="row"> 

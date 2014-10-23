@@ -34,7 +34,8 @@ if (session.getAttribute("jsonArray")!=null) {
         <div><img src="images/pic1.png"></div>
         <div><img src="images/pic2.png"></div>
         <div><img src="images/pic3.png"></div>
-        <div><a href="home.jsp"><img src="images/pic4.png"></a></div>
+        <div><img src="images/pic4.png"></div>
+        <div><a href="home.jsp"><img src="images/pic5.png"></a></div>
     </div>
 
 

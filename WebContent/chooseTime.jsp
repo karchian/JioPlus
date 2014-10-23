@@ -74,6 +74,8 @@ String eventType = newEvent.getString("eventType");
       </div>
     </div>
 
+	<br /><br />
+	
     <div class="welcomeSlides">
         <div><img src="images/weather1.png"></div>
         <div><img src="images/weather2.png"></div>

@@ -79,6 +79,7 @@ function selectNo(i){
 
 <!-- for testing of event list -->
 <% 
+	/*
 	session.setAttribute("user", "Lim Beh");
 	
  	JSONObject a = new JSONObject();
@@ -134,7 +135,7 @@ function selectNo(i){
 	jArray.put(c);
 	
 	session.setAttribute("jsonArray", jArray);
-		
+	*/
 	%>  
 
 
@@ -146,12 +147,12 @@ function selectNo(i){
 		       	String query = request.getQueryString();
 		       	String lastChar = ""+ query.charAt(query.length()-1);
        			int index = Integer.parseInt(lastChar);
-	     		//JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
+	     		JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
 	     		
 	     		JSONObject json = jArray.getJSONObject(index);
 		    	String eventTitle = json.getString("eventTitle");
 		  		JSONArray jsonOptions = json.getJSONArray("options");
-		  		String user = (String)session.getAttribute("user");
+		  		String user = "Test";
 		  		
 		  		%>
   
@@ -203,6 +204,12 @@ function selectNo(i){
 		  			if(yes.contains(user)){
 		  				voteYes = true;
 		  			}
+		  			
+					boolean voteNo = false;
+		  			
+		  			if(no.contains(user)){
+		  				voteNo = true;
+		  			}
 		  		
 		  		%>
 		  		
@@ -211,7 +218,7 @@ function selectNo(i){
 		  			<div class="col-xs-12">Time : <%= eventTime %></div>
 		  			<div class="col-xs-12">Location: <%= eventLocation %></div>
 		  			<div id="yes<%=i %>" class="col-xs-6 yes" style="color:#FFF" onclick="selectYes(<%=i%>)"><%if(voteYes){ %>SELECTED <% }%>YES</div>
-		  			<div id="no<%=i %>" class="col-xs-6 no" style="color:#FFF" onclick="selectNo(<%=i%>)"><%if(!voteYes){ %>SELECTED <% }%>NO</div>		  			
+		  			<div id="no<%=i %>" class="col-xs-6 no" style="color:#FFF" onclick="selectNo(<%=i%>)"><%if(voteNo){ %>SELECTED <% }%>NO</div>		  			
 		  		</div>
 		  		
 		  		

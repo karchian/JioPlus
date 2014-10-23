@@ -56,7 +56,7 @@ function goNext() {
 <div class="container"><h2>When do you want to eat?</h2>
 </div>
 
-<br>
+<span class="glyphicon glyphicon glyphicon-info-sign"></span> You can select more than one option.
 
 <img style="float:left" src="images/breakfast.png" width="160" height="130" onclick="breakfastChecked()" id="breakfast">
 <script>	

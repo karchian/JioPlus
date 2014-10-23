@@ -1,8 +1,15 @@
 <%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
 <%
 JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
-newEvent.put("eventDate", request.getParameter("eventDate"));
-newEvent.put("eventTime", request.getParameter("eventTime"));
+JSONArray options   = new JSONArray();
+JSONObject o1 = new JSONObject();
+o1.put("eventDate", request.getParameter("eventDate"));
+o1.put("eventTime", request.getParameter("eventTime"));
+o1.put("yes","Rachel");
+o1.put("no","");
+options.put(o1);
+newEvent.put("options",options);
 %>
 <!DOCTYPE html>
 <html lang="en">

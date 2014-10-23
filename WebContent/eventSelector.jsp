@@ -52,7 +52,7 @@ function goBack() {
   <img style="float:left" src="images/Meal.png" width="320" height="211" >
 </a>
   
-<a href="periodSelector.jsp?eventType=Activity">
+<a href="periodSelectorActivity.jsp?eventType=Activity">
   <img style="float:left" src="images/Activity.png" width="320" height="211" >
 </a>
 
