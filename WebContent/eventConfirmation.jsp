@@ -1,6 +1,12 @@
   <%@page contentType="text/html; charset=UTF-8"%>
   <%@page import="org.json.JSONObject"%>
   <%@page import="org.json.JSONArray"%>
+  
+  <%
+JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
+newEvent.put("eventLocation", request.getParameter("location"));
+System.out.println(newEvent);
+%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -27,7 +33,7 @@
 		</script>
 		
 		<!-- for testing of event list -->
-		  <% JSONObject a = new JSONObject();
+		  <%-- <% JSONObject a = new JSONObject();
 			a.put("eventTitle", "Let's Kick Ball");
 			a.put("eventDate", "28th October 2014");
 			a.put("eventTime", "12-3 pm");
@@ -37,7 +43,7 @@
 			a.put("numberOfMems", 10); 
 			a.put("members","Tim,Jane,Abigal,Michelle,Terry,Robin Van Persie,Rooney,Messi,Ronaldo,Gerrard,Fanti Ahmad,justin bieber");
 			session.setAttribute("newEvent", a);
-			%>
+			%> --%>
 		
 	
 </head>
