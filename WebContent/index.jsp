@@ -31,10 +31,10 @@ if (session.getAttribute("jsonArray")!=null) {
 
 
     <div class="welcomeSlides">
-        <div><img src="images/pic1.jpeg"></div>
-        <div><img src="images/pic2.jpg"></div>
+        <div><img src="images/pic1.png"></div>
+        <div><img src="images/pic2.png"></div>
         <div><img src="images/pic3.png"></div>
-        <div><a href="home.jsp"><img src="images/pic4.jpeg"></a></div>
+        <div><a href="home.jsp"><img src="images/pic4.png"></a></div>
     </div>
 
 
