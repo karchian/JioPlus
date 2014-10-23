@@ -18,22 +18,6 @@
     <!-- Custom styles for this template -->
     <link href="css/navbar-fixed-top.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <style>
-    
-    .yes {
-    	background-color:green;
-    }
-    
-    .no {
-    	background-color: red;
-    }
-    
-    #newOption{
-    	background-color: yellow;
-    }
-    
-    </style>
-    
     
         <script>
 function goBack() {
@@ -41,40 +25,25 @@ function goBack() {
 }
 
 
-function selectYes(i){
-	// set yes to selected
-	$("#yes"+i).text("SELECTED YES");
-	
-	// remove select from no
-	$("#no"+i).text("NO");
-
-	// add name to yes
-	
-	
-	// remove name from no
-	
-	
-	
-	
-
-}
-
-function selectNo(i){
-	// set yes to selected
-	$("#yes"+i).text("YES");
-	
-	// remove select from no
-	$("#no"+i).text("SELECTED NO");
-
-	// add name to yes
-	
-	
-	// remove name from no
-	
-}
-
-
 </script>
+
+ <style>
+    
+    .optionYes {
+    	color:white;
+    	background-color:green;
+    }
+    
+    .optionNo {
+    	color:white;
+    	background-color: red;
+    }
+    
+	.optionHeader{
+		margin-top:1em;
+	}
+
+    </style>
 
 
 <!-- for testing of event list -->
@@ -94,7 +63,7 @@ function selectNo(i){
 	JSONArray options   = new JSONArray();
 	
 	JSONObject o1 = new JSONObject();
-	o1.put("eventDate", "20th October 2014");
+	o1.put("eventDate", "20th Oct 14");
 	o1.put("eventTime", "7-9 pm");
 	o1.put("eventLocation", "Kith cafe");
 	o1.put("eventType", "Dinner");
@@ -102,7 +71,7 @@ function selectNo(i){
 	o1.put("no","Lim Bu,Lim Beh");
 	
 	JSONObject o2 = new JSONObject();
-	o2.put("eventDate", "30th October 2014");
+	o2.put("eventDate", "30th Oct 14");
 	o2.put("eventTime", "7-8 pm");
 	o2.put("eventLocation", "49 Seats");
 	o2.put("eventType", "Dinner");
@@ -141,7 +110,24 @@ function selectNo(i){
 
   </head>
   
-      	<% 
+  <body>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+        
+<a class="navbar-brand" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span>Back</a>
+<a class="navbar-brand">Summary</a>
+
+        </div>        
+      </div>
+    </div>
+
+
+	
+	
+	
+    	<% 
     			
 		       	String query = request.getQueryString();
 		       	String lastChar = ""+ query.charAt(query.length()-1);
@@ -154,36 +140,6 @@ function selectNo(i){
 		  		String user = (String)session.getAttribute("user");
 		  		
 		  		%>
-  
-  <body>
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-        
-<a class="navbar-brand" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span>Back</a>
-<a class="navbar-brand">Options</a>
-<a class="navbar-brand pull-right" href="summary.jsp?id=<%=index%>">Summary</a>
-        </div>        
-      </div>
-    </div>
-
-	    	
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <div class="container">
-     <div class="navbar-header" id="newOption">
-        
-		<a class="navbar-brand" onclick="newOption()" align="center">New Option</a>
-
-     </div>    
-  </div>
-</nav>
-		  
-	
-	
-	
-	
-
 		  		
 		  		<div class="container-fluid">
 		  		
@@ -198,20 +154,28 @@ function selectNo(i){
 					String yes = option.getString("yes");  
 		  			String no = option.getString("no");
 		  			
-		  			boolean voteYes = false;
+		  			System.out.println("YES:"+yes);
+		  			System.out.println("NO:"+no);
 		  			
-		  			if(yes.contains(user)){
-		  				voteYes = true;
+		  			int yesCount = 0;
+		  			int noCount = 0;
+		  			
+		  			if(yes.contains(",")){
+		  				yesCount = yes.split(",").length;
 		  			}
-		  		
+		  			
+		  			if(no.contains(",")){
+		  				noCount = no.split(",").length;
+		  			}
+		  			
 		  		%>
 		  		
 		  		<div class="row">
-		  			<div class="col-xs-12">Date: <%= eventDate %></div>
-		  			<div class="col-xs-12">Time : <%= eventTime %></div>
-		  			<div class="col-xs-12">Location: <%= eventLocation %></div>
-		  			<div id="yes<%=i %>" class="col-xs-6 yes" style="color:#FFF" onclick="selectYes(<%=i%>)"><%if(voteYes){ %>SELECTED <% }%>YES</div>
-		  			<div id="no<%=i %>" class="col-xs-6 no" style="color:#FFF" onclick="selectNo(<%=i%>)"><%if(!voteYes){ %>SELECTED <% }%>NO</div>		  			
+		  			<div class="col-xs-12 optionHeader"><%= eventLocation %></div>
+		  			<div class="col-xs-5 optionDateTime"><%= eventDate %></br><%= eventTime %></div>
+		  			<div class="col-xs-2 optionYes">YES</br><%=yesCount %></div>
+		  			<div class="col-xs-2 optionNo">NO</br><%=noCount %></div>
+		  			<div class="col-xs-3 optionBook">BOOK</div>  			
 		  		</div>
 		  		
 		  		
