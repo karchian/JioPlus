@@ -2,13 +2,30 @@
 <%@page import="org.json.JSONArray"%>
 <%
 JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
-JSONArray options   = new JSONArray();
+
+String eventId = request.getParameter("eid");
+if(!eventId.equals("null")){
+	JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
+	int i = Integer.parseInt(eventId);
+	newEvent = jArray.getJSONObject(i); 
+}
+
 JSONObject o1 = new JSONObject();
+JSONArray options   = new JSONArray();
+try{
+	options = newEvent.getJSONArray("options");
+} catch(Exception e){
+	System.out.println("No options yet");
+}
+
 o1.put("eventDate", request.getParameter("eventDate"));
 o1.put("eventTime", request.getParameter("eventTime"));
 o1.put("yes","Rachel");
-o1.put("no","");
+o1.put("no",newEvent.get("members"));
 options.put(o1);
+newEvent.put("options",options);
+
+
 //test data
 /*JSONObject o2 = new JSONObject();
 o2.put("yes","");
@@ -16,7 +33,6 @@ o2.put("no","");
 options.put(o2);
 */
 //test ends
-newEvent.put("options",options);
 %>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,12 +1,25 @@
 <%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
 <%
+
 JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
-String invitees = request.getParameter("invitees");
-String members = invitees.replaceAll(",", ", ");
-newEvent.put("members", members);
-String[] arr = invitees.split(",");
-newEvent.put("numberOfMems", arr.length);
+
+String eventId = request.getParameter("eid");
+if(eventId != null){
+	JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
+	int i = Integer.parseInt(eventId);
+	newEvent = jArray.getJSONObject(i); 
+} else {
+	String invitees = request.getParameter("invitees");
+	String members = invitees.replaceAll(",", ", ");
+	newEvent.put("members", members);
+	String[] arr = invitees.split(",");
+	newEvent.put("numberOfMems", arr.length);
+}
 String eventType = newEvent.getString("eventType");
+
+session.setAttribute("newEvent",newEvent);
+
 %>
 
 <html>
@@ -47,9 +60,9 @@ String eventType = newEvent.getString("eventType");
         }
         
         if (eventType=="Activity") {
-        	window.location.href = "activitySelector.jsp?eventDate=" + eventDate + "&eventTime=" + eventTime;
+        	window.location.href = "activitySelector.jsp?eid=<%=eventId%>&eventDate=" + eventDate + "&eventTime=" + eventTime;
         } else {
-        	window.location.href = "mealOptionsSelector.jsp?eventDate=" + eventDate + "&eventTime=" + eventTime;
+        	window.location.href = "mealOptionsSelector.jsp?eid=<%=eventId%>&eventDate=" + eventDate + "&eventTime=" + eventTime;
         }
     }
     </script>

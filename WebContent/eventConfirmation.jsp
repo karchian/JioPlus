@@ -4,8 +4,9 @@
   
   <%
 JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
+ System.out.println("Title"+newEvent.get("eventTitle"));
 JSONArray options = newEvent.getJSONArray("options");
-JSONObject o1 = options.getJSONObject(0);
+JSONObject o1 = options.getJSONObject(options.length()-1);
 o1.put("eventLocation", request.getParameter("location"));
 %>
 <!DOCTYPE html>

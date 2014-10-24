@@ -20,7 +20,13 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     
     <!-- for testing of event list -->
-		 <% /* JSONObject a = new JSONObject();
+		 <%
+		 session.setAttribute("user", "Rachel");
+    		
+    		
+    		
+    
+		 /* JSONObject a = new JSONObject();
 			a.put("eventTitle", "Let's Kick Ball");
 			a.put("eventDate", "28th October 2014");
 			a.put("eventTime", "12-3 pm");
@@ -78,7 +84,9 @@
 	  				}else {
 		  				JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
 		  				
-		  				jArray.put(newEvent);
+		  				if(newEvent.getJSONArray("options").length()==1){
+		  					jArray.put(newEvent);
+		  				}
 		  				session.removeAttribute("confirm");
 		  				session.removeAttribute("newEvent");
 	  				}	

@@ -18,6 +18,8 @@
     <!-- Custom styles for this template -->
     <link href="css/navbar-fixed-top.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    
+    
     <style>
     
     .yes {
@@ -35,53 +37,88 @@
     </style>
     
     
-        <script>
-function goBack() {
-    window.history.back();
-}
+  
 
 
-function selectYes(i){
-	// set yes to selected
-	$("#yes"+i).text("SELECTED YES");
-	
-	// remove select from no
-	$("#no"+i).text("NO");
-
-	// add name to yes
-	
-	
-	// remove name from no
-	
-	
-	
-	
-
-}
-
-function selectNo(i){
-	// set yes to selected
-	$("#yes"+i).text("YES");
-	
-	// remove select from no
-	$("#no"+i).text("SELECTED NO");
-
-	// add name to yes
-	
-	
-	// remove name from no
-	
-}
-
-
-</script>
-
+<% 
+    			/*
+		       	String query = request.getQueryString();
+		       	String lastChar = ""+ query.charAt(query.length()-1);
+       			*/
+       			
+       			String id = request.getParameter("id");
+       			int index = Integer.parseInt(id);
+       			
+	     		JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
+	     		
+	     		JSONObject json = jArray.getJSONObject(index);
+		    	String eventTitle = json.getString("eventTitle");
+		  		JSONArray jsonOptions = json.getJSONArray("options");
+		  		String eventType = json.getString("eventType");
+		  		
+		  		
+		  		
+		  		
+		  		session.setAttribute("event",json);
+		  		
+		  		%>
 
 <!-- for testing of event list -->
 <% 
-	/*
-	session.setAttribute("user", "Lim Beh");
+	String user = (String)session.getAttribute("user");
+		System.out.println("USER: "+user);
+	//Modify option
+	String sayYes = request.getParameter("sayYes");
+	if(sayYes!=null){
+		int i = Integer.parseInt(sayYes);
+		JSONObject option  = jsonOptions.getJSONObject(i);
+		String yes = option.getString("yes");  
+		// add yes
+		if(!yes.contains(user)){
+			yes+= (","+user);
+		}
+
+		
+		//remove from no
+		String no = option.getString("no");
+		no = no.replace(","+user,"");
+		no = no.replace(user+",","");
+		no = no.replace(user,"");
+		
+		option.put("yes",yes);
+		option.put("no",no);
+		
+	}
 	
+	String sayNo = request.getParameter("sayNo");
+	if(sayNo!=null){
+		
+		int i = Integer.parseInt(sayNo);
+		JSONObject option  = jsonOptions.getJSONObject(i);
+		String no = option.getString("no");  
+		// add no
+		if(!no.contains(user)){
+			no+= (","+user);
+		}
+
+		
+		
+		//remove from yes
+		String yes = option.getString("yes");
+		yes = yes.replace(","+user,"");
+		yes = yes.replace(user+",","");
+		yes = yes.replace(user,"");
+		
+		option.put("yes",yes);
+		option.put("no",no);
+		
+		System.out.println(yes);
+		System.out.println(no);
+	}
+	
+	
+		
+		/*
  	JSONObject a = new JSONObject();
 	a.put("eventTitle", "Let's Kick Ball");
 	a.put("eventDate", "28th October 2014");
@@ -98,7 +135,7 @@ function selectNo(i){
 	o1.put("eventDate", "20th October 2014");
 	o1.put("eventTime", "7-9 pm");
 	o1.put("eventLocation", "Kith cafe");
-	o1.put("eventType", "Dinner");
+	
 	o1.put("yes","");
 	o1.put("no","Lim Bu,Lim Beh");
 	
@@ -106,7 +143,6 @@ function selectNo(i){
 	o2.put("eventDate", "30th October 2014");
 	o2.put("eventTime", "7-8 pm");
 	o2.put("eventLocation", "49 Seats");
-	o2.put("eventType", "Dinner");
 	o2.put("yes","Lim Beh, Lim Bu");
 	o2.put("no","");
 	
@@ -115,6 +151,7 @@ function selectNo(i){
 	options.put(o2);
 	
 	b.put("eventTitle", "Dinner meetup");
+	b.put("eventType", "Dinner");
 	b.put("numberOfMems", 3);
 	b.put("members","Lim Beh, Lim Bu");
 	b.put("options",options);
@@ -141,20 +178,42 @@ function selectNo(i){
 
 
   </head>
+        	
   
-      	<% 
-    			
-		       	String query = request.getQueryString();
-		       	String lastChar = ""+ query.charAt(query.length()-1);
-       			int index = Integer.parseInt(lastChar);
-	     		JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
-	     		
-	     		JSONObject json = jArray.getJSONObject(index);
-		    	String eventTitle = json.getString("eventTitle");
-		  		JSONArray jsonOptions = json.getJSONArray("options");
-		  		String user = "Test";
-		  		
-		  		%>
+        <script>
+
+function goBack() {
+	
+	
+	window.location.href = "home.jsp";
+    
+}
+
+
+function selectYes(i){
+	// set yes to selected
+	window.location.href = "eventView.jsp?id="+<%=index%>+"&sayYes="+i;
+	
+
+}
+
+function selectNo(i){
+	
+	window.location.href = "eventView.jsp?id="+<%=index%>+"&sayNo="+i;
+	
+
+}
+
+function newOption(eventId){
+	
+	window.location.href = "chooseTime.jsp?eid="+eventId;
+	
+}
+
+
+</script>
+  
+
   
   <body>
     <!-- Fixed navbar -->
@@ -174,7 +233,7 @@ function selectNo(i){
   <div class="container">
      <div class="navbar-header" id="newOption">
         
-		<a class="navbar-brand" onclick="newOption()" align="center">New Option</a>
+		<a class="navbar-brand" onclick="newOption(<%=index%>)" align="center">New Option</a>
 
      </div>    
   </div>
@@ -221,7 +280,6 @@ function selectNo(i){
 		  			<div id="no<%=i %>" class="col-xs-6 no" style="color:#FFF" onclick="selectNo(<%=i%>)"><%if(voteNo){ %>SELECTED <% }%>NO</div>		  			
 		  		</div>
 		  		
-		  		
 		  		<% }%>
 		  				  		
 		  		</div>
@@ -238,6 +296,7 @@ function selectNo(i){
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.session.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
