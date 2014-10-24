@@ -66,7 +66,7 @@
 <!-- for testing of event list -->
 <% 
 	String user = (String)session.getAttribute("user");
-		System.out.println("USER: "+user);
+		
 	//Modify option
 	String sayYes = request.getParameter("sayYes");
 	if(sayYes!=null){
@@ -75,7 +75,11 @@
 		String yes = option.getString("yes");  
 		// add yes
 		if(!yes.contains(user)){
-			yes+= (","+user);
+			if(yes.length() > 0){
+				yes+= (","+user);	
+			} else {
+				yes+= user;
+			}
 		}
 
 		
@@ -98,7 +102,11 @@
 		String no = option.getString("no");  
 		// add no
 		if(!no.contains(user)){
-			no+= (","+user);
+			if(no.length() > 0){
+				no+= (","+user);	
+			} else {
+				no+= user;
+			}
 		}
 
 		
@@ -112,8 +120,6 @@
 		option.put("yes",yes);
 		option.put("no",no);
 		
-		System.out.println(yes);
-		System.out.println(no);
 	}
 	
 	

@@ -155,18 +155,25 @@ function goBack() {
 					String yes = option.getString("yes");  
 		  			String no = option.getString("no");
 		  			
-		  			System.out.println("YES:"+yes);
-		  			System.out.println("NO:"+no);
 		  			
 		  			int yesCount = 0;
 		  			int noCount = 0;
 		  			
+		  			
 		  			if(yes.contains(",")){
 		  				yesCount = yes.split(",").length;
+		  			} else {
+		  				if(yes.length()>0){
+		  					yesCount = 1;
+		  				}
 		  			}
 		  			
 		  			if(no.contains(",")){
 		  				noCount = no.split(",").length;
+		  			} else {
+		  				if(no.length()>0){
+		  					noCount = 1;
+		  				}
 		  			}
 		  			
 		  		%>
