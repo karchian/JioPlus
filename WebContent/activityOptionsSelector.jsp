@@ -27,12 +27,8 @@ newEvent.put("eventType", request.getParameter("eventType"));
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.locationOptions').slick({
-
-            });
-			 $('.activityOptions').slick({
-
-            });
+            $('.locationOptions').slick();
+			$('.activityOptions').slick();
         });
     </script>
     
@@ -83,7 +79,6 @@ function goNext() {
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
