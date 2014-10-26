@@ -3,8 +3,8 @@
 <%
 JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
 
-String eventId = request.getParameter("eid");
-if(!eventId.equals("null")){
+String eventId = (String) session.getAttribute("eid");
+if(eventId != null){
 	JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
 	int i = Integer.parseInt(eventId);
 	newEvent = jArray.getJSONObject(i); 
@@ -20,7 +20,7 @@ try{
 
 o1.put("eventDate", request.getParameter("eventDate"));
 o1.put("eventTime", request.getParameter("eventTime"));
-o1.put("yes","Rachel");
+o1.put("yes","Daniel");
 o1.put("no","");
 options.put(o1);
 newEvent.put("options",options);
@@ -46,9 +46,9 @@ options.put(o2);
     <title>Activity Selector</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="../css/navbar-fixed-top.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -77,32 +77,32 @@ function goBack() {
 <div class="container"><h2>What do you want to do?</h2>
 </div>
 
-<br/>
+<br />
 <a href="activityOptionsSelector.jsp?eventType=Movie">
-  <img style="float:left" src="images/movie.png" width="160" height="120" >
+  <img style="float:left" src="../images/movie.png" width="160" height="120" >
 </a>
 <a href="activityOptionsSelector.jsp?eventType=Sports">
-  <img style="float:left" src="images/sports.png" width="160" height="120" >
+  <img style="float:left" src="../images/sports.png" width="160" height="120" >
 </a>
 <a href="activityOptionsSelector.jsp?eventType=Outdoor">
-  <img style="float:left" src="images/outdoor.png" width="160" height="120" >
+  <img style="float:left" src="../images/outdoor.png" width="160" height="120" >
 </a>
 <a href="activityOptionsSelector.jsp?eventType=Entertainment">
-  <img style="float:left" src="images/entertainment.png" width="160" height="120" >
+  <img style="float:left" src="../images/entertainment.png" width="160" height="120" >
 </a>
 <a href="activityOptionsSelector.jsp?eventType=Shopping">
-  <img style="float:left" src="images/shopping.png" width="160" height="120" >
+  <img style="float:left" src="../images/shopping.png" width="160" height="120" >
 </a>
 <a href="activityOptionsSelector.jsp?eventType=Others">
-  <img style="float:left" src="images/others.png" width="160" height="120" >
+  <img style="float:left" src="../images/others.png" width="160" height="120" >
 </a>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

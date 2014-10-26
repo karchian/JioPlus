@@ -1,7 +1,12 @@
 <%
 if (session.getAttribute("jsonArray")!=null) {
-	response.sendRedirect("home.jsp");
-	return;
+	if (session.getAttribute("danielResponded")!=null && session.getAttribute("book")==null) {
+		response.sendRedirect("notification.jsp");
+		return;
+	} else {
+		response.sendRedirect("home.jsp");
+		return;
+	}
 }
 %>
 

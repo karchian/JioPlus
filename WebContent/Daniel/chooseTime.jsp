@@ -9,6 +9,7 @@ if(eventId != null){
 	JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
 	int i = Integer.parseInt(eventId);
 	newEvent = jArray.getJSONObject(i); 
+	session.setAttribute("eid",eventId);
 } else {
 	String invitees = request.getParameter("invitees");
 	String members = invitees.replaceAll(",", ", ") + ", Rachel";
@@ -26,13 +27,13 @@ session.setAttribute("newEvent",newEvent);
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Choose A Timing</title>
-    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-  	<link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../slick/slick.css"/>
+  	<link href="../css/bootstrap.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript" src="../slick/slick.min.js"></script>
 
      <script>
     function goBack() {
@@ -76,9 +77,9 @@ session.setAttribute("newEvent",newEvent);
         }
         
         if (eventType=="Meal") {
-        	window.location.href = "mealOptionsSelector.jsp?eid=<%=eventId%>&eventDate=" + eventDate + "&eventTime=" + eventTime;
+        	window.location.href = "mealOptionsSelector.jsp?eventDate=" + eventDate + "&eventTime=" + eventTime;
         } else {
-        	window.location.href = "activitySelector.jsp?eid=<%=eventId%>&eventDate=" + eventDate + "&eventTime=" + eventTime;
+        	window.location.href = "activitySelector.jsp?eventDate=" + eventDate + "&eventTime=" + eventTime;
         }
     }
     </script>
@@ -106,16 +107,16 @@ session.setAttribute("newEvent",newEvent);
 	<br /><br />
 	
     <div class="welcomeSlides">
-    	<% if (eventType.equals("Meal")) { %>
-	        <div><img src="images/weather1.png"></div>
-	        <div><img src="images/weather2.png"></div>
-	        <div><img src="images/weather3.png"></div>
-	        <div><img src="images/weather4.png"></div>
+        <% if (eventType.equals("Meal")) { %>
+	        <div><img src="../images/weather1.png"></div>
+	        <div><img src="../images/weather2.png"></div>
+	        <div><img src="../images/weather3.png"></div>
+	        <div><img src="../images/weather4.png"></div>
 	    <% } else { %>
-	    	<div><img src="images/weather5.png"></div>
-	        <div><img src="images/weather6.png"></div>
-	        <div><img src="images/weather7.png"></div>
-	        <div><img src="images/weather8.png"></div>
+	    	<div><img src="../images/weather5.png"></div>
+	        <div><img src="../images/weather6.png"></div>
+	        <div><img src="../images/weather7.png"></div>
+	        <div><img src="../images/weather8.png"></div>
 	    <% } %>
     </div>
     </body>

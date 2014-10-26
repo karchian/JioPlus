@@ -14,21 +14,17 @@
     <title>Event</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="../css/navbar-fixed-top.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     
-    <%String id = request.getParameter("id"); %>
         <script>
 function goBack() {
     window.history.back();
 }
 
-function selectBook(i){
-	// set yes to selected
-	window.location.href = "book.jsp?id="+<%=id%>;
-}
+
 </script>
 
  <style>
@@ -157,7 +153,8 @@ function selectBook(i){
 					 
 					String yes = option.getString("yes");  
 		  			String no = option.getString("no");
-		  			
+		  			System.out.println(yes);
+		  			System.out.println(no);
 		  			
 		  			int yesCount = 0;
 		  			int noCount = 0;
@@ -186,9 +183,6 @@ function selectBook(i){
 		  			<div class="col-xs-5 optionDateTime"><%= eventDate %></br><%= eventTime %></div>
 		  			<div class="col-xs-2 optionYes">YES</br><%=yesCount %></div>
 		  			<div class="col-xs-2 optionNo">NO</br><%=noCount %></div>
-		  			<% if (session.getAttribute("book")==null) { %>
-		  			<div class="col-xs-3 optionBook" onclick="selectBook(<%=i%>)">BOOK</div>  
-		  			<% } %>			
 		  		</div>
 		  		
 		  		
@@ -207,8 +201,8 @@ function selectBook(i){
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

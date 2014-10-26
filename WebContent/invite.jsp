@@ -77,7 +77,7 @@ function myFunction() {
 		document.getElementById("inviteTable").style.display = "table";
 		document.getElementById("resultTable").style.display = "none";
 	} else {
-		var names = ["Yasmin", "Ashly", "Letha", "Randell", "Jennifer", "Maegan", "Tamela", "Kortney", "Rory", "Melody", "Nydia"];	
+		var names = ["Yasmin", "Ashly", "Letha", "Randell", "Jennifer", "Maegan", "Tamela", "Kortney", "Rory", "Melody", "Nydia", "Ariel", "Camelia", "Frederick", "Daniel"];	
 		var count = 1;
 		
 		document.getElementById("inviteTable").style.display = "none";

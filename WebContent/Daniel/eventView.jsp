@@ -1,3 +1,4 @@
+<%session.setAttribute("danielResponded", "true"); %>
   <%@page contentType="text/html; charset=UTF-8"%>
   <%@page import="org.json.JSONObject"%>
   <%@page import="org.json.JSONArray"%>
@@ -14,9 +15,9 @@
     <title>Event</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="../css/navbar-fixed-top.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     
     
@@ -65,7 +66,7 @@
 
 <!-- for testing of event list -->
 <% 
-	String user = "Rachel";
+	String user = "Daniel";
 		
 	//Modify option
 	String sayYes = request.getParameter("sayYes");
@@ -247,9 +248,9 @@ function newOption(eventId){
 					<div class="container">
 						<div class="customized-row">
 							<% if (eventType.equals("Meal")) { %>
-								<img class="img-rounded" alt="Rounded Image" src="images/Meal.png" height="20%" width="100%" >
+								<img class="img-rounded" alt="Rounded Image" src="../images/Meal.png" height="20%" width="100%" >
 							<% } else { %>
-								<img class="img-rounded" alt="Rounded Image" src="images/Activity.png" height="20%" width="100%" >
+								<img class="img-rounded" alt="Rounded Image" src="../images/Activity.png" height="20%" width="100%" >
 							<% } %>
 						</div> 
 					</div>
@@ -342,7 +343,7 @@ function newOption(eventId){
 		     			%>
 				     		<div class="col-xs-4 col-md-1">
 				            	<a href="#">
-				                <img src="images/stickman.png" class="img-circle" alt="Circular Image" width="80%" height="80%">
+				                <img src="../images/stickman.png" class="img-circle" alt="Circular Image" width="80%" height="80%">
 				           		 </a>
 				           			<div>
 				           				<font size="3"><center><%=name %></center></font>
@@ -415,9 +416,9 @@ function newOption(eventId){
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.session.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.session.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

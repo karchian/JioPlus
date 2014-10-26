@@ -16,13 +16,13 @@ String eventType = newEvent.getString("eventType");
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" href="slick/slick_custom.css"/>
-  	<link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../slick/slick.css"/>
+  	<link href="../css/bootstrap.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript" src="../slick/slick.min.js"></script>
 
      <script>
     function goBack() {
@@ -70,7 +70,7 @@ String eventType = newEvent.getString("eventType");
       <div class="container">
         <div class="navbar-header">
 <a class="navbar-brand" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span>Back</a>
-<a class="navbar-brand pull-right" onclick="goNext('<%= eventType %>')">Next<span class="glyphicon glyphicon-chevron-right"></span></a>
+<a class="navbar-brand pull-right" onclick="goNext()">Next<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>        
       </div>
     </div>
@@ -78,14 +78,14 @@ String eventType = newEvent.getString("eventType");
 	<br /><br />
 	
     <div class="welcomeSlides">
-    	<% if (eventType.equals("Meal")) { %>
-        <div><img src="images/Restaurant1.png"><img src="images/Restaurant1.png"></div>
-        <div><img src="images/Restaurant2.png"><img src="images/Restaurant2.png"></div>
-        <div><img src="images/Restaurant3.png"><img src="images/Restaurant3.png"></div>
+        <% if (eventType.equals("Meal")) { %>
+        <div><img src="../images/Restaurant1.png"><img src="../images/Restaurant1.png"></div>
+        <div><img src="../images/Restaurant2.png"><img src="../images/Restaurant2.png"></div>
+        <div><img src="../images/Restaurant3.png"><img src="../images/Restaurant3.png"></div>
         <% } else { %>
-        	<div><img src="images/Location1.png"><img src="images/Location1.png"></div>
-            <div><img src="images/Location2.png"><img src="images/Location2.png"></div>
-            <div><img src="images/Location3.png"><img src="images/Location3.png"></div>
+        	<div><img src="../images/Location1.png"><img src="../images/Location1.png"></div>
+            <div><img src="../images/Location2.png"><img src="../images/Location2.png"></div>
+            <div><img src="../images/Location3.png"><img src="../images/Location3.png"></div>
         <% }
         %>
     </div>

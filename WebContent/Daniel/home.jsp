@@ -14,9 +14,9 @@
     <title>Home</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="../css/navbar-fixed-top.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     
     <!-- for testing of event list -->
@@ -127,75 +127,68 @@ function pass(val) {
     	
     	<% 			for (int i =0; i<jArray.length(); i++) {
     					JSONObject json = jArray.getJSONObject(i);
-    					JSONArray options = json.getJSONArray("options");
-    					String eventTitle = json.getString("eventTitle");
-    					String eventType = json.getString("eventType"); 
-    					int numberOfMems = json.getInt("numberOfMems"); 
-			  			%>
-    					
-    					<tr id="<%=i %>" onclick="pass(this.id)"><td>
-						<strong><%=eventTitle%></strong><br />
-						<%=eventType %><br />
-						
-						<%
-						if (options.length()==1) { 
-							JSONObject o1 = options.getJSONObject(0);
-							String eventDate = o1.getString("eventDate");
-	    					String eventTime = o1.getString("eventTime");
-	    					String eventLocation = o1.getString("eventLocation");
-	    					String yes = o1.getString("yes");  
-				  			String no = o1.getString("no");
-				  			boolean voteYes = false;
-				  			if(yes.contains("Rachel")){
-				  				voteYes = true;
-				  			}
-							boolean voteNo = false;
-				  			if(no.contains("Rachel")){
-				  				voteNo = true;
-				  			}
-				  			boolean responded = false;
-				  			if (voteYes||voteNo) {
-				  				responded = true;
-				  			}
-						%>
-							<%=eventDate %><br />
-							<%=eventTime %><br />
-							<%=eventLocation %><br />
-							<%=numberOfMems%> invitees<br />
-							<% if (responded) { %>
-								<%="<span class='label label-info'>Responded</span>" %>
-							<% } else { %>
-								<%="<span class='label label-warning'>Awaiting Your Response</span>" %>
-							<% } %>
-						<% } else {
-							boolean responded = false;
-							for (int j=0; j<options.length(); j++) {
-								JSONObject o = options.getJSONObject(j);
-		    					String yes = o.getString("yes");  
-					  			String no = o.getString("no");
+    					String members = json.getString("members");
+    					if (members.contains("Daniel")) {
+	    					JSONArray options = json.getJSONArray("options");
+	    					String eventTitle = json.getString("eventTitle");
+	    					String eventType = json.getString("eventType"); 
+	    					
+	    					int numberOfMems = json.getInt("numberOfMems"); 
+				  			%>
+	    					
+	    					<tr id="<%=i %>" onclick="pass(this.id)"><td>
+							<strong><%=eventTitle%></strong><br />
+							<%
+							if (options.length()==1) { 
+								JSONObject o1 = options.getJSONObject(0);
+								String eventDate = o1.getString("eventDate");
+		    					String eventTime = o1.getString("eventTime");
+		    					String eventLocation = o1.getString("eventLocation");
+		    					String yes = o1.getString("yes");  
+					  			String no = o1.getString("no");
 					  			boolean voteYes = false;
-					  			if(yes.contains("Rachel")){
+					  			if(yes.contains("Daniel")){
 					  				voteYes = true;
 					  			}
 								boolean voteNo = false;
-					  			if(no.contains("Rachel")){
+					  			if(no.contains("Daniel")){
 					  				voteNo = true;
 					  			}
+					  			boolean responded = false;
 					  			if (voteYes||voteNo) {
 					  				responded = true;
 					  			}
-							}
-							if (i==0 && session.getAttribute("book")!=null) {
-								JSONObject option = options.getJSONObject(1);
-								String eventDate = option.getString("eventDate");
-		    					String eventTime = option.getString("eventTime");
-		    					String eventLocation = option.getString("eventLocation"); %>
+							%>
+								<%=eventType %><br />
 								<%=eventDate %><br />
 								<%=eventTime %><br />
 								<%=eventLocation %><br />
 								<%=numberOfMems%> invitees<br />
-								<%="<span class='label label-success'>Booked</span>" %>
-							<% } else { %>
+								<% if (responded) { %>
+									<%="<span class='label label-info'>Responded</span>" %>
+								<% } else { %>
+									<%="<span class='label label-warning'>Awaiting Your Response</span>" %>
+								<% } %>
+							<% } else {
+								boolean responded = false;
+								for (int j=0; j<options.length(); j++) {
+									JSONObject o = options.getJSONObject(j);
+			    					String yes = o.getString("yes");  
+						  			String no = o.getString("no");
+						  			boolean voteYes = false;
+						  			if(yes.contains("Daniel")){
+						  				voteYes = true;
+						  			}
+									boolean voteNo = false;
+						  			if(no.contains("Daniel")){
+						  				voteNo = true;
+						  			}
+						  			if (voteYes||voteNo) {
+						  				responded = true;
+						  			}
+								}
+							%>
+								<%=eventType %><br />
 								<%=numberOfMems%> invitees<br />
 								<%=options.length() %> options available<br />
 								<% if (responded) { %>
@@ -203,11 +196,10 @@ function pass(val) {
 								<% } else { %>
 									<%="<span class='label label-warning'>Awaiting Your Response</span>" %>
 								<% }
-							}
-						} %>
-								
-						</td></tr>
-					
+							} %>
+									
+							</td></tr>
+					<% } %>
     	<% 			} %> 	
 					</table>
     	<% 		}

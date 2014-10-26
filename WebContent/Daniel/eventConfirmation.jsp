@@ -4,8 +4,20 @@
   
   <%
 JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
+String eventId = (String) session.getAttribute("eid");
+
+if (eventId!=null) {
+	JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
+	int i = Integer.parseInt(eventId);
+	newEvent = jArray.getJSONObject(i); 
+}
+
 JSONArray options = newEvent.getJSONArray("options");
 JSONObject o1 = options.getJSONObject(0);
+if (eventId!=null) {
+	o1 = options.getJSONObject(1);
+}
+
 o1.put("eventLocation", request.getParameter("location"));
 %>
 <!DOCTYPE html>
@@ -21,9 +33,9 @@ o1.put("eventLocation", request.getParameter("location"));
     <title>Event Confirmation</title>
     
      <!-- Bootstrap core CSS -->
-	    <link href="css/bootstrap.css" rel="stylesheet">
+	    <link href="../css/bootstrap.css" rel="stylesheet">
 	    <!-- Custom styles for this template -->
-	    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+	    <link href="../css/navbar-fixed-top.css" rel="stylesheet">
 	    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	    
 	    <script>
@@ -53,7 +65,7 @@ o1.put("eventLocation", request.getParameter("location"));
       <div class="container">
         <div class="navbar-header">
         	<a class="btn btn-default customized-navbar-btn" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span>Change</a>
-			<a class="btn btn-default customized-navbar-btn pull-right" href="home.jsp" onclick=<%session.setAttribute("confirm", "true"); %>>Confirm    <span class="glyphicon glyphicon-thumbs-up"></span></a>
+			<a class="btn btn-default customized-navbar-btn pull-right" href="home.jsp" onclick=<%session.setAttribute("confirm", "true"); session.removeAttribute("eid"); %>>Confirm    <span class="glyphicon glyphicon-thumbs-up"></span></a>
         </div>        
       </div>
     </div>
@@ -61,11 +73,22 @@ o1.put("eventLocation", request.getParameter("location"));
     	<% if (null == session.getAttribute("newEvent")) { %>
     			<h3> opps something went wrong here.</h3>
     	<% } else {
-	     		JSONObject json = (JSONObject) session.getAttribute("newEvent"); 
+	    		JSONObject json = (JSONObject) session.getAttribute("newEvent");
+	
+	    		if (eventId!=null) {
+	    			JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
+	    			int i = Integer.parseInt(eventId);
+	    			json = jArray.getJSONObject(i); 
+	    		}
+	
+	    		JSONArray jsonOptions = newEvent.getJSONArray("options");
+	    		JSONObject option = options.getJSONObject(0);
+	    		if (eventId!=null) {
+	    			option = options.getJSONObject(1);
+	    		}
+
      			String eventTitle = json.getString("eventTitle");
 				String eventType = json.getString("eventType"); 
-				JSONArray jsonOptions = json.getJSONArray("options");
-				JSONObject option = jsonOptions.getJSONObject(0);
 				String eventDate = option.getString("eventDate");
 				String eventTime = option.getString("eventTime");
 				String eventLocation = option.getString("eventLocation");
@@ -73,9 +96,9 @@ o1.put("eventLocation", request.getParameter("location"));
 	     		<div class="container">
 	     			<div class="customized-row">
 		     			<% if (eventType.equals("Meal")) { %>
-							<img class="img-rounded" alt="Rounded Image" src="images/Meal.png" height="20%" width="100%" >
+							<img class="img-rounded" alt="Rounded Image" src="../images/Meal.png" height="20%" width="100%" >
 						<% } else { %>
-							<img class="img-rounded" alt="Rounded Image" src="images/Activity.png" height="20%" width="100%" >
+							<img class="img-rounded" alt="Rounded Image" src="../images/Activity.png" height="20%" width="100%" >
 						<% } %>
 		     		</div> 
 	     		</div>
@@ -147,7 +170,7 @@ o1.put("eventLocation", request.getParameter("location"));
 		     			%>
 				     		<div class="col-xs-4 col-md-1">
 				            	<a href="#">
-				                <img src="images/stickman.png" class="img-circle" alt="Circular Image" width="80%" height="80%">
+				                <img src="../images/stickman.png" class="img-circle" alt="Circular Image" width="80%" height="80%">
 				           		 </a>
 				           			<div>
 				           				<font size="3"><center><%=name %></center></font>

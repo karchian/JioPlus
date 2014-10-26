@@ -1,13 +1,6 @@
-  <%@page contentType="text/html; charset=UTF-8"%>
-  <%@page import="org.json.JSONObject"%>
-  <%@page import="org.json.JSONArray"%>
-  
-  <%
-JSONObject newEvent = (JSONObject) session.getAttribute("newEvent");
-JSONArray options = newEvent.getJSONArray("options");
-JSONObject o1 = options.getJSONObject(0);
-o1.put("eventLocation", request.getParameter("location"));
-%>
+<%session.setAttribute("book","true"); %>
+<%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -18,7 +11,7 @@ o1.put("eventLocation", request.getParameter("location"));
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Event Confirmation</title>
+    <title>Booking Confirmation</title>
     
      <!-- Bootstrap core CSS -->
 	    <link href="css/bootstrap.css" rel="stylesheet">
@@ -52,20 +45,27 @@ o1.put("eventLocation", request.getParameter("location"));
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-        	<a class="btn btn-default customized-navbar-btn" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span>Change</a>
-			<a class="btn btn-default customized-navbar-btn pull-right" href="home.jsp" onclick=<%session.setAttribute("confirm", "true"); %>>Confirm    <span class="glyphicon glyphicon-thumbs-up"></span></a>
+        	<a class="btn btn-default customized-navbar-btn" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span>Back</a>
+			<a class="navbar-brand pull-right" href="home.jsp">Home    <span class="glyphicon glyphicon-home"></span></a>
         </div>        
       </div>
     </div>
  
-    	<% if (null == session.getAttribute("newEvent")) { %>
-    			<h3> opps something went wrong here.</h3>
+    	<% if (null == session.getAttribute("jsonArray")) { %>
+    			<h3> oops something went wrong here.</h3>
     	<% } else {
-	     		JSONObject json = (JSONObject) session.getAttribute("newEvent"); 
+    			JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
+    			int id = 0;
+    			try {
+    				id = Integer.parseInt(request.getParameter("id"));
+    			} catch (NumberFormatException e) {
+    				e.printStackTrace();
+    			}
+	     		JSONObject json = jArray.getJSONObject(id);
      			String eventTitle = json.getString("eventTitle");
 				String eventType = json.getString("eventType"); 
 				JSONArray jsonOptions = json.getJSONArray("options");
-				JSONObject option = jsonOptions.getJSONObject(0);
+				JSONObject option = jsonOptions.getJSONObject(1);
 				String eventDate = option.getString("eventDate");
 				String eventTime = option.getString("eventTime");
 				String eventLocation = option.getString("eventLocation");
@@ -123,39 +123,14 @@ o1.put("eventLocation", request.getParameter("location"));
 		     			 	<font size="3" ><%= eventAddress %></font>
 		     			 </div>	     			
 		     		</div>
-		     				    
-		    		<%
-						String members = json.getString("members"); 
-						String[] memberList = members.split(",");
-						int numberOfMems = memberList.length;
-						
-		    		%>
 		    		
-		    		<br />
+		    		<br /><br />
 		    		
-					<div class="row"> 
+		    		<div class="row"> 
 		     			  <div class="col-xs-8 col-md-1 ">
-		     			 	<font size="4" >Invitees</font>
-		     			 	<span class="badge"><%=numberOfMems %></span>
+		     			 	<font size="3" >Reservation & Booking has been made</font>
 		     			 </div>	     			
 		     		</div>
-		     				     		
-		     		<div class="row">
-		     		
-		     			<%
-		     				for (String name:memberList) {
-		     			%>
-				     		<div class="col-xs-4 col-md-1">
-				            	<a href="#">
-				                <img src="images/stickman.png" class="img-circle" alt="Circular Image" width="80%" height="80%">
-				           		 </a>
-				           			<div>
-				           				<font size="3"><center><%=name %></center></font>
-				           			</div>
-				           		 
-				           	</div>	 
-				         <% } %>
-			        </div> 	
        
 			<% } %>	
 

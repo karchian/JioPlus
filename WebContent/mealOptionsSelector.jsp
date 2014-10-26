@@ -26,7 +26,7 @@ try{
 o1.put("eventDate", request.getParameter("eventDate"));
 o1.put("eventTime", request.getParameter("eventTime"));
 o1.put("yes","Rachel");
-o1.put("no",newEvent.get("members"));
+o1.put("no","");
 options.put(o1);
 newEvent.put("options",options);
 %>
