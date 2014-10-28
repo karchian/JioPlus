@@ -23,15 +23,15 @@
     <style>
     
     .yes {
-    	background-color:green;
+    	background-color:#78E853;
     }
     
     .no {
-    	background-color: red;
+    	background-color: #D11919;
     }
     
     #newOption{
-    	background-color: yellow;
+    	background-color: #FFD633;
     }
     
     </style>

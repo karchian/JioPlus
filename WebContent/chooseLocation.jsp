@@ -99,13 +99,13 @@ String eventType = newEvent.getString("eventType");
 	
     <div class="welcomeSlides">
     	<% if (eventType.equals("Meal")) { %>
-        <div><img src="images/Restaurant1.png"><img src="images/Restaurant1.png"></div>
-        <div><img src="images/Restaurant2.png"><img src="images/Restaurant2.png"></div>
-        <div><img src="images/Restaurant3.png"><img src="images/Restaurant3.png"></div>
+        <div><img src="images/Restaurant1.png"><img src="images/RestaurantFull3.png"></div>
+        <div><img src="images/Restaurant2.png"><img src="images/RestaurantFull3.png"></div>
+        <div><img src="images/Restaurant3.png"><img src="images/RestaurantFull3.png"></div>
         <% } else { %>
-        	<div><img src="images/Location1.png"><img src="images/Location1.png"></div>
-            <div><img src="images/Location2.png"><img src="images/Location2.png"></div>
-            <div><img src="images/Location3.png"><img src="images/Location3.png"></div>
+        	<div><img src="images/Location1.png"><img src="images/Location3Full.png"></div>
+            <div><img src="images/Location2.png"><img src="images/Location3Full.png"></div>
+            <div><img src="images/Location3.png"><img src="images/Location3Full.png"></div>
         <% }
         %>
     </div>

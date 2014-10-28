@@ -35,12 +35,12 @@ function selectBook(i){
     
     .optionYes {
     	color:white;
-    	background-color:green;
+    	background-color:#78E853;
     }
     
     .optionNo {
     	color:white;
-    	background-color: red;
+    	background-color: #D11919;
     }
     
 	.optionHeader{
