@@ -83,13 +83,34 @@ session.setAttribute("newEvent",newEvent);
     }
     </script>
 
+    	<style>
+	.slick-dots li button:before{
+		color: white !important;
+	}
+	
+	.slick-prev{
+		left: 0px !important;
+	}
+	.slick-next{ 
+	    right: 0px !important;
+	}
+	
+	.slick-dots{
+		bottom: 0px !important;
+		
+	}
+	</style>
+	
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('.welcomeSlides').slick({
-
+            	arrows: true,
+            	infinite: false
             });
         });
     </script>
+
 
     </head>
     <body>
