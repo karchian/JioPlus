@@ -1,5 +1,8 @@
 <%@page import="org.json.JSONObject"%>
   <%@page import="org.json.JSONArray"%>
+<audio src="../audio/vibration.mp3" autoplay loop>
+</audio>
+
 <%
 JSONArray jArray = (JSONArray) session.getAttribute("jsonArray");
 JSONObject json = jArray.getJSONObject(0);
